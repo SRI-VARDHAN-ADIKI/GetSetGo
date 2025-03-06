@@ -15,3 +15,7 @@ function updateClock() {
 
 setInterval(updateClock, 1000);
 updateClock(); 
+
+
+let listContainer = document.getElementById("listOfTasks");
+
