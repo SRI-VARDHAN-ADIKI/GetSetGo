@@ -1,44 +1,39 @@
-*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
 }
-
-
 .clock {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    border: 10px solid #333;
-    border-radius: 50%;
-    background: white;
-}
-
-.hour, .minute, .second {
     position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+.todo-container {
     width: 50%;
-    height: 6px;
-    background: #333;
-    top: 50%;
-    transform-origin: 100%;
-    transform: rotate(90deg);
+    margin-top: 50px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
-
-.hour {
-    height: 8px;
-    width: 40%;
-    background: #000;
+.task-list {
+    list-style: none;
+    padding: 0;
 }
-
-.minute {
-    height: 6px;
-    width: 45%;
-    background: #333;
+.task-item {
+    padding: 10px;
+    background: #e9ecef;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
 }
-
-.second {
-    height: 4px;
-    width: 50%;
-    background: red;
+.sticky-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
 }

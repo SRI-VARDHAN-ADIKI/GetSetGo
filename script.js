@@ -1,21 +1,38 @@
 function updateClock() {
     const now = new Date();
-    const seconds = now.getSeconds();
-    const minutes = now.getMinutes();
-    const hours = now.getHours();
-    
-    const secondDeg = ((seconds / 60) * 360) + 90;
-    const minuteDeg = ((minutes / 60) * 360) + 90;
-    const hourDeg = ((hours / 12) * 360) + 90;
-    
-    document.getElementById('second').style.transform = `rotate(${secondDeg}deg)`;
-    document.getElementById('minute').style.transform = `rotate(${minuteDeg}deg)`;
-    document.getElementById('hour').style.transform = `rotate(${hourDeg}deg)`;
+    document.getElementById('clock').innerText = now.toLocaleTimeString();
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+function loadTasks() {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const taskList = document.getElementById('taskList');
+    taskList.innerHTML = '';
+    tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+        li.className = 'task-item';
+        li.innerHTML = `${task} <button class="btn btn-danger btn-sm" onclick="deleteTask(${index})">X</button>`;
+        taskList.appendChild(li);
+    });
 }
 
-setInterval(updateClock, 1000);
-updateClock(); 
+function addTask() {
+    const taskInput = document.getElementById('taskInput').value;
+    if (taskInput.trim() === '') return;
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks.push(taskInput);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    document.getElementById('taskInput').value = '';
+    loadTasks();
+    bootstrap.Modal.getInstance(document.getElementById('taskModal')).hide();
+}
 
+function deleteTask(index) {
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks.splice(index, 1);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    loadTasks();
+}
 
-let listContainer = document.getElementById("listOfTasks");
-
+document.addEventListener('DOMContentLoaded', loadTasks);
