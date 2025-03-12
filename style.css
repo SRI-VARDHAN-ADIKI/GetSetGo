@@ -3,7 +3,7 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    background-color: #f8f9fa;
+    background-color: red;
 }
 .clock {
     position: absolute;
