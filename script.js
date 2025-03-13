@@ -12,18 +12,20 @@ function loadTasks() {
     tasks.forEach((task, index) => {
         const li = document.createElement('li');
         li.className = 'task-item';
-        li.innerHTML = `${task} <button class="btn btn-danger btn-sm" onclick="deleteTask(${index})">X</button>`;
+        li.innerHTML = `${task} <button class="btn btn-danger btn-sm" onclick="deleteTask(${index})"><i class="fa-solid fa-trash"></i></button>`;
         taskList.appendChild(li);
     });
 }
 
 function addTask() {
-    const taskInput = document.getElementById('taskInput').value;
-    if (taskInput.trim() === '') return;
+    const taskInput = document.getElementById('taskHeadingInput').value;
+    const taskDescription = document.getElementById('taskDescriptionInput').value;
+    if (taskInput.trim() === '' || taskDescription.trim() === '') return;
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    tasks.push(taskInput);
+    tasks.push({ task: taskInput, description: taskDescription });
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    document.getElementById('taskInput').value = '';
+    document.getElementById('taskHeadingInput').value = '';
+    document.getElementById('taskDescriptionInput').value = '';
     loadTasks();
     bootstrap.Modal.getInstance(document.getElementById('taskModal')).hide();
 }
