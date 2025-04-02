@@ -16,13 +16,31 @@
     <div class="container">
         <div class="todo-container">
             <h2 class="text-center mb-4">To-Do List</h2>
-            <ul class="list-group" id="taskList"></ul>
-            <div id="noTasks" class="text-center mt-3 text-muted d-none">
-                No tasks yet. Add one to get started!
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-center">Not Done</h4>
+                    <ul class="list-group" id="notDoneList"></ul>
+                    <div id="noNotDoneTasks" class="text-center mt-3 text-muted d-none">
+                        No incomplete tasks yet.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="text-center">Done</h4>
+                    <ul class="list-group" id="doneList"></ul>
+                    <div id="noDoneTasks" class="text-center mt-3 text-muted d-none">
+                        No completed tasks yet.
+                    </div>
+                </div>
             </div>
         </div>
         <button class="btn btn-primary sticky-btn" data-bs-toggle="modal" data-bs-target="#taskModal">
             <i class="fas fa-plus me-2"></i>Add Task
+        </button>
+        <button class="btn btn-success sticky-btn share-btn" onclick="shareList()">
+            <i class="fas fa-share-alt me-2"></i>Share List
+        </button>
+        <button class="btn btn-danger sticky-btn clear-btn" onclick="clearAllTasks()">
+            <i class="fas fa-trash me-2"></i>Clear All
         </button>
     </div>
 
