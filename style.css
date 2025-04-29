@@ -2,30 +2,31 @@ body {
     min-height: 100vh;
     background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
     padding: 20px;
+    font-size: 16px; /* Base font size for better scaling */
 }
 
 .clock-container {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 10px;
     z-index: 1000;
 }
 
 .clock {
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Slightly smaller for mobile */
     font-weight: 600;
     color: #333;
     background: rgba(255, 255, 255, 0.9);
-    padding: 8px 16px;
-    border-radius: 20px;
+    padding: 6px 12px;
+    border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .todo-container {
     width: 100%;
     max-width: 800px;
-    margin: 60px 0 20px 50px; /* Shifted left by adjusting margin-left from auto to 50px */
-    padding: 25px;
+    margin: 60px 0 20px 50px; /* Shifted left on desktop */
+    padding: 20px;
     background: white;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -38,6 +39,7 @@ body {
     border-radius: 8px;
     transition: all 0.3s ease;
     cursor: move;
+    padding: 12px; /* Increased padding for touch */
 }
 
 .list-group-item:hover {
@@ -53,6 +55,7 @@ body {
 .task-title {
     font-weight: 600;
     color: #2c3e50;
+    font-size: 1.1rem; /* Slightly larger for readability */
 }
 
 .task-description {
@@ -69,22 +72,24 @@ body {
 .sticky-btn {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    right: 15px;
     border-radius: 50px;
-    padding: 10px 20px;
+    padding: 12px 20px; /* Larger padding for touch */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
+    font-size: 1rem; /* Larger text */
+    min-width: 120px; /* Ensure buttons are wide enough */
 }
 
 .share-btn {
-    bottom: 80px;
-    right: 30px;
+    bottom: 90px; /* Adjusted spacing */
+    right: 15px;
     background-color: #28a745;
 }
 
 .clear-btn {
-    bottom: 130px;
-    right: 30px;
+    bottom: 150px; /* Adjusted spacing */
+    right: 15px;
     background-color: #dc3545;
 }
 
@@ -100,6 +105,14 @@ body {
 
 .form-check-input {
     cursor: pointer;
+    width: 20px; /* Larger checkbox for touch */
+    height: 20px;
+    margin-right: 10px;
+}
+
+.btn-edit, .btn-danger, .btn-success {
+    padding: 6px 10px; /* Larger buttons for touch */
+    font-size: 0.9rem;
 }
 
 .btn-edit {
@@ -108,7 +121,7 @@ body {
 
 .editable-input {
     width: 100%;
-    padding: 5px;
+    padding: 8px;
     border: 1px solid #ced4da;
     border-radius: 4px;
     font-size: 1rem;
@@ -116,7 +129,7 @@ body {
 
 .editable-textarea {
     width: 100%;
-    padding: 5px;
+    padding: 8px;
     border: 1px solid #ced4da;
     border-radius: 4px;
     font-size: 0.9rem;
@@ -125,4 +138,94 @@ body {
 
 .col-md-6 {
     padding: 0 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .todo-container {
+        max-width: 100%;
+        margin: 50px 0 20px 10px; /* Reduced left shift for mobile */
+        padding: 15px;
+    }
+
+    .clock-container {
+        top: 5px;
+        right: 5px;
+    }
+
+    .clock {
+        font-size: 1rem;
+        padding: 5px 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Smaller heading */
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    .list-group-item {
+        padding: 10px;
+    }
+
+    .task-title {
+        font-size: 1rem;
+    }
+
+    .task-description {
+        font-size: 0.85rem;
+    }
+
+    .sticky-btn {
+        right: 10px;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        min-width: 100px;
+    }
+
+    .share-btn {
+        bottom: 80px;
+    }
+
+    .clear-btn {
+        bottom: 135px;
+    }
+
+    .modal-dialog {
+        margin: 10px; /* Less margin for modal on small screens */
+    }
+
+    .modal-content {
+        padding: 10px;
+    }
+
+    .form-check-input {
+        width: 18px;
+        height: 18px;
+    }
+
+    .btn-edit, .btn-danger, .btn-success {
+        padding: 5px 8px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .col-md-6 {
+        padding: 0 5px;
+    }
+
+    .todo-container {
+        margin: 40px 0 20px 5px; /* Further reduced left shift */
+    }
+
+    .sticky-btn {
+        min-width: 90px;
+    }
 }
